@@ -1,0 +1,11 @@
+ <ul style="list-style: none" class="list-group" >
+   <li class=""
+    *ngFor="let genre of genres"
+    >
+      <a
+        class="dropdown-item"
+        [routerLink]="[ 'genre', genre.id ]"
+        routerLinkActive="['active', 'font-weight-bold']"
+        >{{ genre.name }}</a>
+   </li>
+ </ul>

@@ -1,0 +1,9 @@
+div {
+    /* overflow: hidden; */
+}
+
+img {
+    width: 100%;
+    /* you can use % */
+    height: auto;
+}
