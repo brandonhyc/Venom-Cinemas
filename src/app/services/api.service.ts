@@ -40,6 +40,13 @@ export class ApiService {
     );
   }
 
+  create(url: string, resource: Object = {}, options?):Observable<any> {
+    return this.http.post(`${environment.apiUrl}${url}`, JSON.stringify(resource), options).pipe(
+      map(response => response as any)
+    );
+  }
+
+
   consoleService(message: String): void {
     console.log(message);
   }

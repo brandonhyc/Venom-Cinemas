@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router'
 import { FormsModule } from '@angular/forms'
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { JwtModule } from '@auth0/angular-jwt';
 
 import { AppComponent } from './app.component';
 import { MovieListComponent } from './movies/movie-list.component';
@@ -24,6 +25,10 @@ import { ContactUsComponent } from './shared/components/contact-us.component';
 import { LoginComponent } from './login/login.component';
 import { NotFoundComponent } from './shared/components/not-found.component';
 import { CarouselComponent } from './shared/components/carousel.component';
+
+export function tokenGetter() {
+  return localStorage.getItem('token');
+}
 
 @NgModule({
   declarations: [
@@ -62,8 +67,14 @@ import { CarouselComponent } from './shared/components/carousel.component';
       { path: 'login', component: LoginComponent },
       { path: '**', component: NotFoundComponent },
 
-
     ]),
+    JwtModule.forRoot({
+      config: {
+      tokenGetter: tokenGetter,
+      whitelistedDomains: ['localhost']
+      }
+
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
